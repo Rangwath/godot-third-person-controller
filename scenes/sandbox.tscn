@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://clqudgsctos6p"]
+
+[ext_resource type="Material" uid="uid://bi4w30aiulwvl" path="res://materials/prototype_material_dark.tres" id="1_0jekp"]
+[ext_resource type="PackedScene" uid="uid://y5kukjgawfqx" path="res://game_objects/player.tscn" id="2_50pi8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5qceg"]
+
+[sub_resource type="Sky" id="Sky_r7emx"]
+sky_material = SubResource("ProceduralSkyMaterial_5qceg")
+
+[sub_resource type="Environment" id="Environment_rwraf"]
+background_mode = 2
+sky = SubResource("Sky_r7emx")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fb1b8"]
+size = Vector2(20, 20)
+
+[node name="Sandbox" type="Node3D"]
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rwraf")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGMesh3D" parent="Environment"]
+use_collision = true
+mesh = SubResource("PlaneMesh_fb1b8")
+material = ExtResource("1_0jekp")
+
+[node name="Wall" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, 0)
+use_collision = true
+size = Vector3(1, 4, 21)
+material = ExtResource("1_0jekp")
+
+[node name="Wall4" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, 0)
+use_collision = true
+size = Vector3(1, 4, 21)
+material = ExtResource("1_0jekp")
+
+[node name="Wall2" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2, -10)
+use_collision = true
+size = Vector3(1, 4, 21)
+material = ExtResource("1_0jekp")
+
+[node name="Wall3" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2, 10)
+use_collision = true
+size = Vector3(1, 4, 21)
+material = ExtResource("1_0jekp")
+
+[node name="Box" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 0)
+use_collision = true
+material = ExtResource("1_0jekp")
+
+[node name="Box2" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -1)
+use_collision = true
+size = Vector3(1, 2, 1)
+material = ExtResource("1_0jekp")
+
+[node name="Box3" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, -1)
+use_collision = true
+size = Vector3(1, 3, 1)
+material = ExtResource("1_0jekp")
+
+[node name="Box4" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.5, -1)
+use_collision = true
+size = Vector3(4, 1, 1)
+material = ExtResource("1_0jekp")
+
+[node name="Box5" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3.5, -3)
+use_collision = true
+size = Vector3(2, 1, 1)
+material = ExtResource("1_0jekp")
+
+[node name="Player" parent="." instance=ExtResource("2_50pi8")]
