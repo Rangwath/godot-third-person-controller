@@ -22,7 +22,7 @@ var pitch_sensititivy_joypad: float = 2
 var yaw_acceleration: float = 15
 var pitch_acceleration: float = 15
 
-var is_joypad_connected = false
+var is_joypad_connected: bool = false
 
 
 func _ready() -> void:
@@ -43,8 +43,8 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	# Get camera yaw and pitch from joypad/gamepad if connected
 	if is_joypad_connected:
-		var joy_axis_right_x = apply_deadzone(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X))
-		var joy_axis_right_y = apply_deadzone(Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y))
+		var joy_axis_right_x: float = apply_deadzone(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X))
+		var joy_axis_right_y: float = apply_deadzone(Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y))
 		
 		yaw += -joy_axis_right_x * yaw_sensitivity_joypad
 		pitch += joy_axis_right_y * pitch_sensititivy_joypad
