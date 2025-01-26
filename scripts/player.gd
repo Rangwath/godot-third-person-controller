@@ -44,7 +44,7 @@ func handle_jumping() -> void:
 func handle_horizontal_input(delta: float) -> Vector2:
 	var input_direction: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var input:= Vector3.ZERO
-
+	
 	input.x = input_direction.x
 	input.z = input_direction.y
 	
